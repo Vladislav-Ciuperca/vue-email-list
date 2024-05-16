@@ -14,10 +14,9 @@
 <body>
     <div id="app">
 
-        <div>il numeor di oggi ze {{mail}}</div>
-
-        <div v-for="index in 10">
-            <div @getNumero()></div>
+        <div v-for="index in indirizzi">
+            <div v-if="indirizzi.length==10">{{index}}</div>
+            <div v-else="">caricamento</div>
         </div>
 
     </div>

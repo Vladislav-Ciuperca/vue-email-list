@@ -5,27 +5,30 @@ createApp({
     data() {
         return {
             mail: null,
-            indirizzo: 'https://flynn.boolean.careers/exercises/api/random/mail'
+            indirizzo: 'https://flynn.boolean.careers/exercises/api/random/mail',
+            indirizzi: []
         }
     },
+    // thisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthis
     methods: {
-        getNumero() {
-            axios.get(this.indirizzo).then((result) => { //attenzione all'arrow function!!
+        getMail() {
+            axios.get(this.indirizzo).then((result) => {
 
-                let codiceRisposta = `${result.status}/${result.statusText}`;
-                let datiRisposta = result.data;
+                console.log(result.data.response)
 
-                console.log("Ricevuta risposta", codiceRisposta, datiRisposta);
-
-                this.mail = datiRisposta.response;
+                this.indirizzi.push(result.data.response)
 
             });
         }
     },
+    // thisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthisthis
     mounted() {
         console.log("App montata");
 
-        this.getNumero();
+        for (let i = 0; i < 10; i++) {
+            this.getMail()
+        }
+
     }
 
 }).mount('#app');
